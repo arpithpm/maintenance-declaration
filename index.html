@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guided bilingual maintenance declaration for German tax purposes."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%23173f35%22/><text x=%2250%22 y=%2269%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2260%22 font-style=%22italic%22 fill=%22%23f3efe6%22>U</text></svg>" />
+    <title>Maintenance declaration · Unterhaltserklärung</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Maintenance declaration home">
+        <span class="wordmark-mark" aria-hidden="true">U</span>
+        <span>
+          <strong data-en="Maintenance declaration" data-de="Unterhaltserklärung">Maintenance declaration</strong>
+          <small data-en="German income tax · § 33a EStG" data-de="Deutsche Einkommensteuer · § 33a EStG">German income tax · § 33a EStG</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <div class="privacy-chip">
+          <span class="privacy-dot" aria-hidden="true"></span>
+          <span data-en="Saved only on this device" data-de="Nur auf diesem Gerät gespeichert">Saved only on this device</span>
+        </div>
+        <div class="language-switch" aria-label="Language">
+          <button type="button" class="language-button is-active" data-language="en" aria-pressed="true">EN</button>
+          <button type="button" class="language-button" data-language="de" aria-pressed="false">DE</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-kicker" data-en="A clearer way to complete the official declaration" data-de="Die offizielle Erklärung – einfach und verständlich">A clearer way to complete the official declaration</div>
+        <h1>
+          <span data-en="Tell us about the support," data-de="Machen Sie Angaben zur Unterstützung,">Tell us about the support,</span>
+          <em data-en="one step at a time." data-de="Schritt für Schritt.">one step at a time.</em>
+        </h1>
+        <p class="hero-copy" data-en="This guided form collects the information from the bilingual Unterhaltserklärung. Your answers stay in this browser. At the end, review and print the declaration for signatures and the foreign authority’s stamp." data-de="Dieses Formular erfasst die Angaben der zweisprachigen Unterhaltserklärung. Ihre Antworten bleiben in diesem Browser. Am Ende können Sie die Erklärung prüfen und für Unterschriften sowie den Stempel der ausländischen Behörde ausdrucken.">
+          This guided form collects the information from the bilingual Unterhaltserklärung. Your answers stay in this browser. At the end, review and print the declaration for signatures and the foreign authority’s stamp.
+        </p>
+        <div class="hero-meta" aria-label="Form information">
+          <span><b>6</b> <span data-en="short steps" data-de="kurze Schritte">short steps</span></span>
+          <span><b>15–20</b> <span data-en="minutes" data-de="Minuten">minutes</span></span>
+          <span><b>0</b> <span data-en="data uploads" data-de="Daten-Uploads">data uploads</span></span>
+        </div>
+      </section>
+
+      <div class="form-shell">
+        <aside class="step-sidebar" aria-label="Form progress">
+          <div class="progress-summary">
+            <div class="progress-ring" style="--progress: 0" aria-hidden="true">
+              <span id="progress-percent">0%</span>
+            </div>
+            <div>
+              <strong data-en="Your progress" data-de="Ihr Fortschritt">Your progress</strong>
+              <small id="save-status" data-en="Ready to begin" data-de="Bereit">Ready to begin</small>
+            </div>
+          </div>
+
+          <nav class="step-nav">
+            <button type="button" class="step-link is-active" data-step-target="1">
+              <span class="step-number">01</span>
+              <span><b data-en="Taxpayer" data-de="Steuerpflichtige Person">Taxpayer</b><small data-en="Who provides support" data-de="Wer unterstützt">Who provides support</small></span>
+            </button>
+            <button type="button" class="step-link" data-step-target="2">
+              <span class="step-number">02</span>
+              <span><b data-en="Supported person" data-de="Unterstützte Person">Supported person</b><small data-en="Identity & household" data-de="Person & Haushalt">Identity & household</small></span>
+            </button>
+            <button type="button" class="step-link" data-step-target="3">
+              <span class="step-number">03</span>
+              <span><b data-en="Financial situation" data-de="Wirtschaftliche Lage">Financial situation</b><small data-en="Income & assets" data-de="Einnahmen & Vermögen">Income & assets</small></span>
+            </button>
+            <button type="button" class="step-link" data-step-target="4">
+              <span class="step-number">04</span>
+              <span><b data-en="Support details" data-de="Angaben zur Unterstützung">Support details</b><small data-en="Payments & circumstances" data-de="Zahlungen & Umstände">Payments & circumstances</small></span>
+            </button>
+            <button type="button" class="step-link" data-step-target="5">
+              <span class="step-number">05</span>
+              <span><b data-en="Evidence" data-de="Nachweise">Evidence</b><small data-en="Documents to prepare" data-de="Unterlagen vorbereiten">Documents to prepare</small></span>
+            </button>
+            <button type="button" class="step-link" data-step-target="6">
+              <span class="step-number">06</span>
+              <span><b data-en="Review" data-de="Prüfen">Review</b><small data-en="Declare & print" data-de="Versichern & drucken">Declare & print</small></span>
+            </button>
+          </nav>
+
+          <button type="button" class="text-button danger-action" id="clear-form-button">
+            <span aria-hidden="true">↺</span>
+            <span data-en="Clear all answers" data-de="Alle Antworten löschen">Clear all answers</span>
+          </button>
+        </aside>
+
+        <form id="maintenance-form" novalidate>
+          <section class="form-step is-active" data-step="1" aria-labelledby="step-1-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 01 · Taxpayer" data-de="Schritt 01 · Steuerpflichtige Person">Step 01 · Taxpayer</span>
+              <h2 id="step-1-title" data-en="Who is claiming the tax deduction?" data-de="Wer beantragt die steuerliche Anerkennung?">Who is claiming the tax deduction?</h2>
+              <p data-en="Enter the details of the person living in Germany who provided the financial support." data-de="Tragen Sie die Person mit Wohnsitz in Deutschland ein, die die Unterstützungsleistungen erbracht hat.">Enter the details of the person living in Germany who provided the financial support.</p>
+            </div>
+
+            <div class="notice notice-neutral">
+              <span class="notice-icon" aria-hidden="true">i</span>
+              <p data-en="This is the taxpayer—not the person who received support." data-de="Hier ist die steuerpflichtige Person gemeint – nicht die unterstützte Person.">This is the taxpayer—not the person who received support.</p>
+            </div>
+
+            <fieldset class="form-card">
+              <legend data-en="Declaration period" data-de="Zeitraum der Erklärung">Declaration period</legend>
+              <div class="field-grid field-grid-2">
+                <label class="field">
+                  <span><b data-en="Calendar year" data-de="Kalenderjahr">Calendar year</b><i aria-hidden="true">*</i></span>
+                  <input name="tax_year" id="tax_year" type="number" min="2000" max="2100" inputmode="numeric" required />
+                  <small data-en="The year in which support was paid" data-de="Das Jahr, in dem die Unterstützung gezahlt wurde">The year in which support was paid</small>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-card">
+              <legend data-en="Taxpayer’s personal details" data-de="Persönliche Angaben der steuerpflichtigen Person">Taxpayer’s personal details</legend>
+              <div class="field-grid field-grid-3">
+                <label class="field compact-field">
+                  <span><b data-en="Title" data-de="Anrede">Title</b></span>
+                  <select name="applicant_title">
+                    <option value="" data-en="Select" data-de="Auswählen">Select</option>
+                    <option value="Mr" data-en="Mr" data-de="Herr">Mr</option>
+                    <option value="Mrs/Ms" data-en="Mrs / Ms" data-de="Frau">Mrs / Ms</option>
+                    <option value="Mx" data-en="Mx" data-de="Divers">Mx</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span><b data-en="First name" data-de="Vorname">First name</b><i aria-hidden="true">*</i></span>
+                  <input name="applicant_first_name" autocomplete="given-name" required />
+                </label>
+                <label class="field">
+                  <span><b data-en="Surname" data-de="Familienname">Surname</b><i aria-hidden="true">*</i></span>
+                  <input name="applicant_last_name" autocomplete="family-name" required />
+                </label>
+              </div>
+
+              <div class="field-grid field-grid-address">
+                <label class="field address-field">
+                  <span><b data-en="Street and house number" data-de="Straße und Hausnummer">Street and house number</b><i aria-hidden="true">*</i></span>
+                  <input name="applicant_street" autocomplete="street-address" required />
+                </label>
+                <label class="field postal-field">
+                  <span><b data-en="Postal code" data-de="Postleitzahl">Postal code</b><i aria-hidden="true">*</i></span>
+                  <input name="applicant_postal_code" autocomplete="postal-code" inputmode="numeric" required />
+                </label>
+                <label class="field city-field">
+                  <span><b data-en="Town / city" data-de="Wohnort">Town / city</b><i aria-hidden="true">*</i></span>
+                  <input name="applicant_city" autocomplete="address-level2" required />
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="step-actions">
+              <span class="required-note"><i>*</i> <span data-en="Required information" data-de="Pflichtangabe">Required information</span></span>
+              <button type="button" class="button button-primary next-step" data-next="2"><span data-en="Continue to supported person" data-de="Weiter zur unterstützten Person">Continue to supported person</span><span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="2" aria-labelledby="step-2-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 02 · Supported person" data-de="Schritt 02 · Unterstützte Person">Step 02 · Supported person</span>
+              <h2 id="step-2-title" data-en="Who received the support?" data-de="Wer wurde unterstützt?">Who received the support?</h2>
+              <p data-en="These personal and household details normally need confirmation by the local authority abroad." data-de="Diese Angaben zur Person und zum Haushalt sind in der Regel durch die ausländische Gemeinde- oder Meldebehörde zu bestätigen.">These personal and household details normally need confirmation by the local authority abroad.</p>
+            </div>
+
+            <fieldset class="form-card">
+              <legend data-en="Personal details" data-de="Persönliche Angaben">Personal details</legend>
+              <div class="field-grid field-grid-2">
+                <label class="field">
+                  <span><b data-en="First name" data-de="Vorname">First name</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_first_name" autocomplete="given-name" required />
+                </label>
+                <label class="field">
+                  <span><b data-en="Surname" data-de="Familienname">Surname</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_last_name" autocomplete="family-name" required />
+                </label>
+                <label class="field">
+                  <span><b data-en="Date of birth" data-de="Geburtsdatum">Date of birth</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_birth_date" type="date" required />
+                </label>
+                <label class="field">
+                  <span><b data-en="Place of birth" data-de="Geburtsort">Place of birth</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_birth_place" required />
+                </label>
+              </div>
+
+              <div class="field-grid field-grid-address">
+                <label class="field address-field">
+                  <span><b data-en="Street and house number" data-de="Straße und Hausnummer">Street and house number</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_street" autocomplete="street-address" required />
+                </label>
+                <label class="field postal-field">
+                  <span><b data-en="Postal code" data-de="Postleitzahl">Postal code</b></span>
+                  <input name="recipient_postal_code" autocomplete="postal-code" />
+                </label>
+                <label class="field city-field">
+                  <span><b data-en="Town / city" data-de="Wohnort">Town / city</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_city" autocomplete="address-level2" required />
+                </label>
+              </div>
+
+              <div class="field-grid field-grid-2">
+                <label class="field">
+                  <span><b data-en="Country of residence" data-de="Wohnsitzstaat">Country of residence</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_country" autocomplete="country-name" required />
+                  <small data-en="This can affect the maximum deductible amount" data-de="Dies kann den abzugsfähigen Höchstbetrag beeinflussen">This can affect the maximum deductible amount</small>
+                </label>
+                <label class="field">
+                  <span><b data-en="Relationship to taxpayer / spouse" data-de="Verwandtschaftsverhältnis zur steuerpflichtigen Person / zum Ehegatten">Relationship to taxpayer / spouse</b><i aria-hidden="true">*</i></span>
+                  <select name="recipient_relationship" required>
+                    <option value="" data-en="Select relationship" data-de="Verhältnis auswählen">Select relationship</option>
+                    <option value="parent" data-en="Parent" data-de="Elternteil">Parent</option>
+                    <option value="grandparent" data-en="Grandparent" data-de="Großelternteil">Grandparent</option>
+                    <option value="child" data-en="Child" data-de="Kind">Child</option>
+                    <option value="grandchild" data-en="Grandchild" data-de="Enkelkind">Grandchild</option>
+                    <option value="spouse" data-en="Spouse / registered partner" data-de="Ehegatte / eingetragener Lebenspartner">Spouse / registered partner</option>
+                    <option value="former_spouse" data-en="Former spouse / partner" data-de="Früherer Ehegatte / Lebenspartner">Former spouse / partner</option>
+                    <option value="other_parent" data-en="Other parent of a non-marital child" data-de="Anderer Elternteil eines nichtehelichen Kindes">Other parent of a non-marital child</option>
+                    <option value="other" data-en="Other" data-de="Sonstige Person">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-grid field-grid-2">
+                <div class="field choice-field">
+                  <span><b data-en="Marital status" data-de="Familienstand">Marital status</b><i aria-hidden="true">*</i></span>
+                  <div class="segmented-control four-options">
+                    <label><input type="radio" name="recipient_marital_status" value="single" required /><span data-en="Single" data-de="Ledig">Single</span></label>
+                    <label><input type="radio" name="recipient_marital_status" value="married" /><span data-en="Married" data-de="Verheiratet">Married</span></label>
+                    <label><input type="radio" name="recipient_marital_status" value="widowed" /><span data-en="Widowed" data-de="Verwitwet">Widowed</span></label>
+                    <label><input type="radio" name="recipient_marital_status" value="divorced" /><span data-en="Divorced" data-de="Geschieden">Divorced</span></label>
+                  </div>
+                </div>
+                <label class="field">
+                  <span><b data-en="Occupation / type of work" data-de="Beruf / Art der Tätigkeit">Occupation / type of work</b><i aria-hidden="true">*</i></span>
+                  <input name="recipient_occupation" required placeholder="e.g. tailor, student, retired" data-placeholder-en="e.g. tailor, student, retired" data-placeholder-de="z. B. Schneiderin, Student, Rentner" />
+                </label>
+              </div>
+
+              <div class="field choice-field">
+                <span><b data-en="How often does this person work?" data-de="Wie regelmäßig ist die Person berufstätig?">How often does this person work?</b><i aria-hidden="true">*</i></span>
+                <div class="segmented-control three-options">
+                  <label><input type="radio" name="recipient_employment_frequency" value="regular" required /><span data-en="Regularly" data-de="Regelmäßig">Regularly</span></label>
+                  <label><input type="radio" name="recipient_employment_frequency" value="occasional" /><span data-en="Occasionally" data-de="Gelegentlich">Occasionally</span></label>
+                  <label><input type="radio" name="recipient_employment_frequency" value="none" /><span data-en="Not employed" data-de="Nicht berufstätig">Not employed</span></label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-card repeatable-card">
+              <div class="legend-row">
+                <legend data-en="Other people living in the same household" data-de="Weitere im selben Haushalt lebende Personen">Other people living in the same household</legend>
+                <button type="button" class="button button-secondary add-row" data-template="household-person-template" data-container="household-people">
+                  <span aria-hidden="true">+</span><span data-en="Add person" data-de="Person hinzufügen">Add person</span>
+                </button>
+              </div>
+              <p class="card-intro" data-en="Include everyone who normally shares the household, even if they did not receive support." data-de="Geben Sie alle Personen an, die gewöhnlich zum Haushalt gehören – auch wenn sie nicht unterstützt wurden.">Include everyone who normally shares the household, even if they did not receive support.</p>
+              <div id="household-people" class="repeatable-list" data-empty-en="No other household members added." data-empty-de="Keine weiteren Haushaltsmitglieder hinzugefügt."></div>
+            </fieldset>
+
+            <div class="step-actions">
+              <button type="button" class="button button-ghost previous-step" data-previous="1"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
+              <button type="button" class="button button-primary next-step" data-next="3"><span data-en="Continue to finances" data-de="Weiter zu den Finanzen">Continue to finances</span><span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="3" aria-labelledby="step-3-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 03 · Financial situation" data-de="Schritt 03 · Wirtschaftliche Verhältnisse">Step 03 · Financial situation</span>
+              <h2 id="step-3-title" data-en="Could the person support themselves?" data-de="Konnte die Person ihren Lebensunterhalt selbst bestreiten?">Could the person support themselves?</h2>
+              <p data-en="Declare all income, benefits, expenses and assets for the selected calendar year in the recipient’s home currency." data-de="Geben Sie alle Einnahmen, Leistungen, Ausgaben und Vermögenswerte im gewählten Kalenderjahr in der Landeswährung der unterstützten Person an.">Declare all income, benefits, expenses and assets for the selected calendar year in the recipient’s home currency.</p>
+            </div>
+
+            <div class="notice notice-warning">
+              <span class="notice-icon" aria-hidden="true">!</span>
+              <div>
+                <strong data-en="Do not leave financial rows ambiguous" data-de="Finanzielle Angaben eindeutig ausfüllen">Do not leave financial rows ambiguous</strong>
+                <p data-en="Enter 0 where there was no income or expense. Keep supporting documents for every non-zero amount." data-de="Tragen Sie 0 ein, wenn keine Einnahmen oder Ausgaben vorlagen. Bewahren Sie für jeden anderen Betrag Nachweise auf.">Enter 0 where there was no income or expense. Keep supporting documents for every non-zero amount.</p>
+              </div>
+            </div>
+
+            <fieldset class="form-card financial-card">
+              <div class="legend-row currency-row">
+                <legend data-en="Income and expenditure" data-de="Einnahmen und Ausgaben">Income and expenditure</legend>
+                <label class="inline-field">
+                  <span data-en="Home currency" data-de="Landeswährung">Home currency</span>
+                  <input name="home_currency" maxlength="12" placeholder="e.g. INR" data-placeholder-en="e.g. INR" data-placeholder-de="z. B. INR" required />
+                </label>
+              </div>
+              <div class="finance-table" role="group" aria-label="Income and expenditure">
+                <div class="finance-header">
+                  <span data-en="Source" data-de="Quelle">Source</span>
+                  <span data-en="Income" data-de="Einnahmen">Income</span>
+                  <span data-en="Expenses" data-de="Ausgaben">Expenses</span>
+                </div>
+                <div class="finance-row"><label for="income_wages" data-en="Wage / salary" data-de="Arbeitslohn">Wage / salary</label><input id="income_wages" name="income_wages" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_wages" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Wage expenses" /></div>
+                <div class="finance-row"><label for="income_pension" data-en="Pension" data-de="Rente / Pension">Pension</label><input id="income_pension" name="income_pension" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_pension" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Pension expenses" /></div>
+                <div class="finance-row"><label for="income_agriculture" data-en="Agriculture" data-de="Landwirtschaft">Agriculture</label><input id="income_agriculture" name="income_agriculture" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_agriculture" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Agricultural expenses" /></div>
+                <div class="finance-row"><label for="income_business" data-en="Trade / independent activity" data-de="Gewerbebetrieb / selbständige Tätigkeit">Trade / independent activity</label><input id="income_business" name="income_business" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_business" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Business expenses" /></div>
+                <div class="finance-row"><label for="income_rental" data-en="Rental and lease" data-de="Vermietung und Verpachtung">Rental and lease</label><input id="income_rental" name="income_rental" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_rental" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Rental expenses" /></div>
+                <div class="finance-row"><label for="income_other" data-en="Other income (e.g. interest)" data-de="Andere Einnahmen (z. B. Zinsen)">Other income (e.g. interest)</label><input id="income_other" name="income_other" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_other" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Other expenses" /></div>
+                <div class="finance-row"><label for="income_social" data-en="Social benefits" data-de="Sozialleistungen">Social benefits</label><input id="income_social" name="income_social" type="number" min="0" step="0.01" inputmode="decimal" value="0" /><input name="expense_social" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Social benefit expenses" /></div>
+              </div>
+              <label class="field full-field">
+                <span><b data-en="Explanation of other income or expenses" data-de="Erläuterung anderer Einnahmen oder Ausgaben">Explanation of other income or expenses</b></span>
+                <textarea name="financial_notes" rows="3"></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-card financial-card">
+              <legend data-en="Assets" data-de="Vermögen">Assets</legend>
+              <div class="asset-table" role="group" aria-label="Assets">
+                <div class="asset-header"><span data-en="Type of asset" data-de="Art des Vermögens">Type of asset</span><span data-en="Details" data-de="Erläuterungen">Details</span><span data-en="Value" data-de="Wert">Value</span></div>
+                <div class="asset-row"><label for="asset_land_details" data-en="Land owned" data-de="Grundbesitz">Land owned</label><input id="asset_land_details" name="asset_land_details" /><input name="asset_land_value" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Land value" /></div>
+                <div class="asset-row"><label for="asset_house_details" data-en="Own house" data-de="Eigenes Haus">Own house</label><input id="asset_house_details" name="asset_house_details" /><input name="asset_house_value" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="House value" /></div>
+                <div class="asset-row"><label for="asset_agriculture_details" data-en="Agricultural property" data-de="Landwirtschaftliches Vermögen">Agricultural property</label><input id="asset_agriculture_details" name="asset_agriculture_details" /><input name="asset_agriculture_value" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Agricultural property value" /></div>
+                <div class="asset-row"><label for="asset_real_property_details" data-en="Further real property" data-de="Weiterer Grundbesitz">Further real property</label><input id="asset_real_property_details" name="asset_real_property_details" /><input name="asset_real_property_value" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Further property value" /></div>
+                <div class="asset-row"><label for="asset_other_details" data-en="Other assets (bank balance, insurance, etc.)" data-de="Sonstiges Vermögen (Bankguthaben, Versicherungen usw.)">Other assets (bank balance, insurance, etc.)</label><input id="asset_other_details" name="asset_other_details" /><input name="asset_other_value" type="number" min="0" step="0.01" inputmode="decimal" value="0" aria-label="Other asset value" /></div>
+              </div>
+              <div class="calculated-total">
+                <span data-en="Total declared assets" data-de="Angegebenes Gesamtvermögen">Total declared assets</span>
+                <strong><span id="asset-total">0.00</span> <span class="currency-output">—</span></strong>
+              </div>
+              <div class="field choice-field bordered-choice">
+                <span><b data-en="Are these assets sufficient to meet the person’s subsistence needs?" data-de="Reicht dieses Vermögen zur Bestreitung des Lebensunterhalts aus?">Are these assets sufficient to meet the person’s subsistence needs?</b><i aria-hidden="true">*</i></span>
+                <div class="segmented-control two-options">
+                  <label><input type="radio" name="assets_sufficient" value="yes" required /><span data-en="Yes" data-de="Ja">Yes</span></label>
+                  <label><input type="radio" name="assets_sufficient" value="no" /><span data-en="No" data-de="Nein">No</span></label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="step-actions">
+              <button type="button" class="button button-ghost previous-step" data-previous="2"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
+              <button type="button" class="button button-primary next-step" data-next="4"><span data-en="Continue to support details" data-de="Weiter zu den Unterstützungsangaben">Continue to support details</span><span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="4" aria-labelledby="step-4-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 04 · Support details" data-de="Schritt 04 · Angaben zur Unterstützung">Step 04 · Support details</span>
+              <h2 id="step-4-title" data-en="How was the person supported?" data-de="Wie wurde die Person unterstützt?">How was the person supported?</h2>
+              <p data-en="Explain the timing, payment route and circumstances. Clear answers help the tax office assess whether the support was necessary and traceable." data-de="Erläutern Sie Zeitraum, Zahlungsweg und Umstände. Eindeutige Angaben helfen dem Finanzamt, Bedürftigkeit und Zahlungsfluss zu prüfen.">Explain the timing, payment route and circumstances. Clear answers help the tax office assess whether the support was necessary and traceable.</p>
+            </div>
+
+            <fieldset class="form-card numbered-questions">
+              <legend data-en="Support history" data-de="Verlauf der Unterstützung">Support history</legend>
+              <div class="question-block">
+                <span class="question-number">01</span>
+                <div class="question-content">
+                  <h3 data-en="When did this person first receive support?" data-de="Wann wurde diese Person erstmals unterstützt?">When did this person first receive support?</h3>
+                  <div class="field-grid field-grid-2 narrow-grid">
+                    <label class="field"><span><b data-en="Month" data-de="Monat">Month</b><i aria-hidden="true">*</i></span><select name="support_start_month" required><option value="" data-en="Select month" data-de="Monat auswählen">Select month</option><option value="01" data-en="January" data-de="Januar">January</option><option value="02" data-en="February" data-de="Februar">February</option><option value="03" data-en="March" data-de="März">March</option><option value="04" data-en="April" data-de="April">April</option><option value="05" data-en="May" data-de="Mai">May</option><option value="06" data-en="June" data-de="Juni">June</option><option value="07" data-en="July" data-de="Juli">July</option><option value="08" data-en="August" data-de="August">August</option><option value="09" data-en="September" data-de="September">September</option><option value="10" data-en="October" data-de="Oktober">October</option><option value="11" data-en="November" data-de="November">November</option><option value="12" data-en="December" data-de="Dezember">December</option></select></label>
+                    <label class="field"><span><b data-en="Year" data-de="Jahr">Year</b><i aria-hidden="true">*</i></span><input name="support_start_year" type="number" min="1900" max="2100" inputmode="numeric" required /></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question-block">
+                <span class="question-number">02</span>
+                <div class="question-content">
+                  <h3 data-en="How and by whom were payments made?" data-de="Wie und durch wen sind die Zahlungen erfolgt?">How and by whom were payments made?</h3>
+                  <label class="field full-field"><textarea name="payment_method_explanation" rows="4" required placeholder="Name the payer, payment route, recipient account and frequency." data-placeholder-en="Name the payer, payment route, recipient account and frequency." data-placeholder-de="Nennen Sie zahlende Person, Zahlungsweg, Empfängerkonto und Häufigkeit."></textarea></label>
+                  <div class="notice notice-critical compact-notice"><span class="notice-icon" aria-hidden="true">!</span><p data-en="For monetary support from 2025 onward, use a bank transfer to an account belonging to the supported person and retain the bank statements." data-de="Geldzuwendungen sind ab 2025 auf ein Konto der unterstützten Person zu überweisen. Bewahren Sie die Kontoauszüge auf.">For monetary support from 2025 onward, use a bank transfer to an account belonging to the supported person and retain the bank statements.</p></div>
+                </div>
+              </div>
+
+              <div class="question-block">
+                <span class="question-number">03</span>
+                <div class="question-content">
+                  <h3 data-en="How did the person meet their needs before support began?" data-de="Wie wurde der Lebensunterhalt vor Beginn der Unterstützung bestritten?">How did the person meet their needs before support began?</h3>
+                  <label class="field full-field"><textarea name="prior_subsistence" rows="4" required></textarea></label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-card numbered-questions">
+              <legend data-en="Shared support and work situation" data-de="Gemeinsame Unterstützung und Erwerbssituation">Shared support and work situation</legend>
+              <div class="question-block conditional-question">
+                <span class="question-number">04</span>
+                <div class="question-content">
+                  <h3 data-en="Does the person live with other people who also receive support?" data-de="Lebt die Person mit anderen unterstützten Personen in einem Haushalt?">Does the person live with other people who also receive support?</h3>
+                  <div class="segmented-control two-options compact-options">
+                    <label><input type="radio" name="lives_with_supported_people" value="yes" required data-reveal="co-supported-details" /><span data-en="Yes" data-de="Ja">Yes</span></label>
+                    <label><input type="radio" name="lives_with_supported_people" value="no" /><span data-en="No" data-de="Nein">No</span></label>
+                  </div>
+                  <label class="field conditional-panel" id="co-supported-details"><span><b data-en="Names and family relationships" data-de="Namen und Verwandtschaftsverhältnisse">Names and family relationships</b></span><textarea name="co_supported_people_details" rows="3"></textarea></label>
+                </div>
+              </div>
+
+              <div class="question-block conditional-question">
+                <span class="question-number">05</span>
+                <div class="question-content">
+                  <h3 data-en="Do any other people contribute to this person’s support?" data-de="Tragen noch andere Personen zum Unterhalt bei?">Do any other people contribute to this person’s support?</h3>
+                  <div class="segmented-control two-options compact-options">
+                    <label><input type="radio" name="other_supporters_exist" value="yes" required data-reveal="other-supporters-panel" /><span data-en="Yes" data-de="Ja">Yes</span></label>
+                    <label><input type="radio" name="other_supporters_exist" value="no" /><span data-en="No" data-de="Nein">No</span></label>
+                  </div>
+                  <div class="conditional-panel repeatable-card" id="other-supporters-panel">
+                    <div class="legend-row">
+                      <span><b data-en="Other supporters" data-de="Weitere unterstützende Personen">Other supporters</b></span>
+                      <button type="button" class="button button-secondary add-row" data-template="supporter-template" data-container="other-supporters"><span aria-hidden="true">+</span><span data-en="Add supporter" data-de="Person hinzufügen">Add supporter</span></button>
+                    </div>
+                    <div id="other-supporters" class="repeatable-list" data-empty-en="No other supporters added." data-empty-de="Keine weiteren unterstützenden Personen hinzugefügt."></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="question-block">
+                <span class="question-number">06</span>
+                <div class="question-content">
+                  <h3 data-en="Why was the person not employed, or employed only occasionally?" data-de="Warum war die Person nicht oder nur gelegentlich berufstätig?">Why was the person not employed, or employed only occasionally?</h3>
+                  <p class="question-help" data-en="Complete this only if the person was of working age and did not work regularly. State concrete reasons and available evidence." data-de="Nur ausfüllen, wenn die Person im arbeitsfähigen Alter und nicht regelmäßig berufstätig war. Nennen Sie konkrete Gründe und vorhandene Nachweise.">Complete this only if the person was of working age and did not work regularly. State concrete reasons and available evidence.</p>
+                  <label class="field full-field"><textarea name="employment_limitation_reason" rows="4"></textarea></label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="step-actions">
+              <button type="button" class="button button-ghost previous-step" data-previous="3"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
+              <button type="button" class="button button-primary next-step" data-next="5"><span data-en="Continue to evidence" data-de="Weiter zu den Nachweisen">Continue to evidence</span><span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="5" aria-labelledby="step-5-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 05 · Evidence" data-de="Schritt 05 · Nachweise">Step 05 · Evidence</span>
+              <h2 id="step-5-title" data-en="Prepare the supporting documents" data-de="Bereiten Sie die Nachweise vor">Prepare the supporting documents</h2>
+              <p data-en="The declaration does not replace evidence. Use this checklist to record what is ready and what still needs attention." data-de="Die Erklärung ersetzt keine Nachweise. Halten Sie hier fest, welche Unterlagen vorliegen und was noch erledigt werden muss.">The declaration does not replace evidence. Use this checklist to record what is ready and what still needs attention.</p>
+            </div>
+
+            <div class="evidence-grid">
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_authority_confirmation" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Authority confirmation" data-de="Behördliche Bestätigung">Authority confirmation</b><small data-en="Local authority’s stamp/signature, or equivalent official documents" data-de="Stempel/Unterschrift der Heimatbehörde oder gleichwertige amtliche Dokumente">Local authority’s stamp/signature, or equivalent official documents</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_bank_records" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Bank transfer records" data-de="Überweisungsnachweise">Bank transfer records</b><small data-en="Statements showing payer, recipient, date and amount" data-de="Kontoauszüge mit zahlender Person, Empfänger, Datum und Betrag">Statements showing payer, recipient, date and amount</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_income" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Income / pension records" data-de="Einkommens- / Rentennachweise">Income / pension records</b><small data-en="Tax, salary, pension, business or rental documents" data-de="Steuer-, Lohn-, Renten-, Gewerbe- oder Vermietungsunterlagen">Tax, salary, pension, business or rental documents</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_social_benefits" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Social-benefit decision" data-de="Sozialleistungsbescheid">Social-benefit decision</b><small data-en="Benefit notice or official confirmation of non-entitlement" data-de="Leistungsbescheid oder amtliche Negativbescheinigung">Benefit notice or official confirmation of non-entitlement</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_assets" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Asset evidence" data-de="Vermögensnachweise">Asset evidence</b><small data-en="Bank balances, property records and insurance values" data-de="Bankguthaben, Grundbesitz und Versicherungswerte">Bank balances, property records and insurance values</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_work_limitation" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Reason for not working" data-de="Grund für fehlende Erwerbstätigkeit">Reason for not working</b><small data-en="Medical, disability, study, childcare or care evidence where relevant" data-de="Ggf. ärztliche, Ausbildungs-, Kinderbetreuungs- oder Pflegenachweise">Medical, disability, study, childcare or care evidence where relevant</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_translations" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="German translations" data-de="Deutsche Übersetzungen">German translations</b><small data-en="Officially acceptable translations of foreign-language documents" data-de="Amtlich anerkannte Übersetzungen fremdsprachiger Unterlagen">Officially acceptable translations of foreign-language documents</small></span>
+              </label>
+              <label class="evidence-item">
+                <input type="checkbox" name="evidence_anlage_unterhalt" />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span><b data-en="Anlage Unterhalt" data-de="Anlage Unterhalt">Anlage Unterhalt</b><small data-en="The corresponding attachment to the German income-tax return" data-de="Die entsprechende Anlage zur deutschen Einkommensteuererklärung">The corresponding attachment to the German income-tax return</small></span>
+              </label>
+            </div>
+
+            <label class="field full-field form-card">
+              <span><b data-en="Notes about missing or alternative evidence" data-de="Hinweise zu fehlenden oder alternativen Nachweisen">Notes about missing or alternative evidence</b></span>
+              <textarea name="evidence_notes" rows="4"></textarea>
+            </label>
+
+            <div class="notice notice-neutral">
+              <span class="notice-icon" aria-hidden="true">i</span>
+              <p data-en="You do not upload documents here. Keep them with your tax records and provide them when requested by the tax office." data-de="Hier werden keine Dokumente hochgeladen. Bewahren Sie die Unterlagen bei Ihren Steuerunterlagen auf und reichen Sie sie auf Anforderung des Finanzamts ein.">You do not upload documents here. Keep them with your tax records and provide them when requested by the tax office.</p>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="button button-ghost previous-step" data-previous="4"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
+              <button type="button" class="button button-primary next-step" data-next="6"><span data-en="Review declaration" data-de="Erklärung prüfen">Review declaration</span><span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="form-step" data-step="6" aria-labelledby="step-6-title">
+            <div class="step-heading">
+              <span class="eyebrow" data-en="Step 06 · Review" data-de="Schritt 06 · Prüfen">Step 06 · Review</span>
+              <h2 id="step-6-title" data-en="Review before signing" data-de="Vor der Unterschrift prüfen">Review before signing</h2>
+              <p data-en="Check the summary, return to any section that needs changes, then print or save the declaration." data-de="Prüfen Sie die Zusammenfassung, korrigieren Sie nötigenfalls einzelne Abschnitte und drucken oder speichern Sie anschließend die Erklärung.">Check the summary, return to any section that needs changes, then print or save the declaration.</p>
+            </div>
+
+            <div id="validation-summary" class="validation-summary" role="status" aria-live="polite"></div>
+            <div id="review-content" class="review-content"></div>
+
+            <fieldset class="declaration-card">
+              <legend data-en="Declaration by the supported person" data-de="Versicherung der unterstützten Person">Declaration by the supported person</legend>
+              <p data-en="I declare that the information provided is true and complete to the best of my knowledge and belief." data-de="Ich versichere, dass die vorstehenden Angaben wahrheitsgemäß und nach bestem Wissen und Gewissen gemacht wurden.">I declare that the information provided is true and complete to the best of my knowledge and belief.</p>
+              <label class="declaration-check">
+                <input type="checkbox" name="declaration_confirmed" required />
+                <span class="custom-check" aria-hidden="true">✓</span>
+                <span data-en="I understand that incorrect information can lead to penalties and administrative fines, and that the supported person must sign the printed declaration." data-de="Mir ist bekannt, dass unrichtige Angaben straf- und bußgeldrechtliche Folgen haben können und die unterstützte Person die ausgedruckte Erklärung unterschreiben muss.">I understand that incorrect information can lead to penalties and administrative fines, and that the supported person must sign the printed declaration.</span>
+              </label>
+            </fieldset>
+
+            <div class="final-actions">
+              <button type="button" class="button button-ghost previous-step" data-previous="5"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
+              <button type="button" class="button button-secondary" id="download-json-button"><span aria-hidden="true">↓</span><span data-en="Download answers" data-de="Antworten herunterladen">Download answers</span></button>
+              <button type="button" class="button button-primary print-button" id="print-button"><span aria-hidden="true">▤</span><span data-en="Print / save as PDF" data-de="Drucken / als PDF speichern">Print / save as PDF</span></button>
+            </div>
+            <p class="final-footnote" data-en="Printing creates a completed declaration, not an automatic tax filing. The supported person must sign it and the foreign authority must complete the certification section." data-de="Der Ausdruck ist eine ausgefüllte Erklärung, keine automatische Steuererklärung. Die unterstützte Person muss unterschreiben; die ausländische Behörde muss den Bestätigungsabschnitt ausfüllen.">Printing creates a completed declaration, not an automatic tax filing. The supported person must sign it and the foreign authority must complete the certification section.</p>
+          </section>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p><strong data-en="Privacy by design." data-de="Datenschutz von Anfang an.">Privacy by design.</strong> <span data-en="No account, no server, no hidden upload." data-de="Kein Konto, kein Server, kein versteckter Upload.">No account, no server, no hidden upload.</span></p>
+      <p data-en="This tool assists with data collection and is not tax or legal advice." data-de="Dieses Werkzeug unterstützt bei der Datenerfassung und ist keine Steuer- oder Rechtsberatung.">This tool assists with data collection and is not tax or legal advice.</p>
+    </footer>
+
+    <template id="household-person-template">
+      <div class="repeatable-row household-row">
+        <span class="row-index" aria-hidden="true"></span>
+        <label class="field"><span><b data-en="Full name" data-de="Vollständiger Name">Full name</b></span><input data-field="name" /></label>
+        <label class="field"><span><b data-en="Relationship" data-de="Verwandtschaftsverhältnis">Relationship</b></span><input data-field="relationship" /></label>
+        <label class="field"><span><b data-en="Age" data-de="Alter">Age</b></span><input data-field="age" type="number" min="0" max="125" inputmode="numeric" /></label>
+        <button type="button" class="remove-row" aria-label="Remove household member">×</button>
+      </div>
+    </template>
+
+    <template id="supporter-template">
+      <div class="repeatable-row supporter-row">
+        <span class="row-index" aria-hidden="true"></span>
+        <label class="field"><span><b data-en="Full name" data-de="Vollständiger Name">Full name</b></span><input data-field="name" /></label>
+        <label class="field"><span><b data-en="Address" data-de="Anschrift">Address</b></span><input data-field="address" /></label>
+        <label class="field"><span><b data-en="Amount & frequency" data-de="Betrag & Häufigkeit">Amount & frequency</b></span><input data-field="amount" /></label>
+        <button type="button" class="remove-row" aria-label="Remove supporter">×</button>
+      </div>
+    </template>
+
+    <section id="print-document" aria-hidden="true"></section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
