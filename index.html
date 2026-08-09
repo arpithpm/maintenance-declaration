@@ -520,7 +520,7 @@
             <div class="final-actions">
               <button type="button" class="button button-ghost previous-step" data-previous="5"><span aria-hidden="true">←</span><span data-en="Back" data-de="Zurück">Back</span></button>
               <button type="button" class="button button-secondary" id="download-json-button"><span aria-hidden="true">↓</span><span data-en="Download answers" data-de="Antworten herunterladen">Download answers</span></button>
-              <button type="button" class="button button-primary print-button" id="print-button"><span aria-hidden="true">▤</span><span data-en="Print / save as PDF" data-de="Drucken / als PDF speichern">Print / save as PDF</span></button>
+              <button type="button" class="button button-primary" id="download-pdf-button"><span aria-hidden="true">↓</span><span data-en="Download completed PDF" data-de="Ausgefülltes PDF herunterladen">Download completed PDF</span></button>
             </div>
             <p class="final-footnote" data-en="Printing creates a completed declaration, not an automatic tax filing. The supported person must sign it and the foreign authority must complete the certification section." data-de="Der Ausdruck ist eine ausgefüllte Erklärung, keine automatische Steuererklärung. Die unterstützte Person muss unterschreiben; die ausländische Behörde muss den Bestätigungsabschnitt ausfüllen.">Printing creates a completed declaration, not an automatic tax filing. The supported person must sign it and the foreign authority must complete the certification section.</p>
           </section>
@@ -553,8 +553,10 @@
       </div>
     </template>
 
-    <section id="print-document" aria-hidden="true"></section>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="pdf-template.js"></script>
+    <script src="pdf-generator.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -23,6 +23,6 @@ Then open <http://localhost:8080>.
 - Evidence checklist
 - Review screen
 - Downloadable JSON backup
-- Four-page print layout for printing or saving as PDF
+- Direct four-page A4 PDF download using the official bilingual declaration as the visual template
 
 This is a client-only prototype. It does not submit a tax return or upload data to a server.

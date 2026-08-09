@@ -10,7 +10,6 @@
   const saveStatus = document.getElementById("save-status");
   const reviewContent = document.getElementById("review-content");
   const validationSummary = document.getElementById("validation-summary");
-  const printDocument = document.getElementById("print-document");
   const toast = document.getElementById("toast");
   let currentStep = 1;
   let language = "en";
@@ -31,6 +30,9 @@
       declarationMissing: "Confirm the declaration",
       downloadComplete: "Answers downloaded",
       printBlocked: "Please complete the required fields and declaration first.",
+      pdfGenerating: "Creating your PDF…",
+      pdfDownloaded: "Completed PDF downloaded",
+      pdfUnavailable: "The PDF generator could not be loaded. Check your connection and try again.",
       noAnswer: "Not provided",
       yes: "Yes",
       no: "No",
@@ -96,6 +98,9 @@
       declarationMissing: "Versicherung bestätigen",
       downloadComplete: "Antworten heruntergeladen",
       printBlocked: "Bitte füllen Sie zuerst alle Pflichtfelder aus und bestätigen Sie die Versicherung.",
+      pdfGenerating: "PDF wird erstellt…",
+      pdfDownloaded: "Ausgefülltes PDF heruntergeladen",
+      pdfUnavailable: "Der PDF-Generator konnte nicht geladen werden. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
       noAnswer: "Keine Angabe",
       yes: "Ja",
       no: "Nein",
@@ -429,87 +434,6 @@
       </section>`).join("");
   }
 
-  function buildPrintDocument() {
-    const currency = value("home_currency") || "";
-    const incomeRows = [
-      ["Wage / salary · Arbeitslohn", "income_wages", "expense_wages"], ["Pension · Rente / Pension", "income_pension", "expense_pension"],
-      ["Agriculture · Landwirtschaft", "income_agriculture", "expense_agriculture"], ["Trade / independent activity · Gewerbe / selbständige Tätigkeit", "income_business", "expense_business"],
-      ["Rental and lease · Vermietung und Verpachtung", "income_rental", "expense_rental"], ["Other income · Andere Einnahmen", "income_other", "expense_other"],
-      ["Social benefits · Sozialleistungen", "income_social", "expense_social"]
-    ];
-    const assetRows = [
-      ["Land owned · Grundbesitz", "asset_land_details", "asset_land_value"], ["Own house · Eigenes Haus", "asset_house_details", "asset_house_value"],
-      ["Agricultural property · Landwirtschaft", "asset_agriculture_details", "asset_agriculture_value"], ["Further real property · Weiterer Grundbesitz", "asset_real_property_details", "asset_real_property_value"],
-      ["Other assets · Sonstiges Vermögen", "asset_other_details", "asset_other_value"]
-    ];
-    const householdRows = serializeRows("household-people").filter((row) => row.name || row.relationship || row.age);
-    const supporterRows = serializeRows("other-supporters").filter((row) => row.name || row.address || row.amount);
-
-    printDocument.innerHTML = `
-      <article class="print-page">
-        <h1 class="print-title">${escapeHtml(t().declarationTitle)} ${escapeHtml(value("tax_year"))}</h1>
-        <p class="print-subtitle">${escapeHtml(t().declarationSubtitle)} ${escapeHtml(value("tax_year"))}</p>
-        ${printSection("Applicant / Antragsteller", [
-          ["Name / Name", joinValues([value("applicant_title"), value("applicant_first_name"), value("applicant_last_name")])],
-          ["Address in Germany / Anschrift in Deutschland", formatAddress("applicant")]
-        ])}
-        ${printSection("A. Personal details / Persönliche Angaben", [
-          ["Supported person / Unterstützte Person", joinValues([value("recipient_first_name"), value("recipient_last_name")])],
-          ["Date and place of birth / Geburtsdatum und -ort", joinValues([formatDate(value("recipient_birth_date")), value("recipient_birth_place")], " · ")],
-          ["Address / Wohnort", joinValues([formatAddress("recipient"), value("recipient_country")], " · ")],
-          ["Relationship / Verwandtschaftsverhältnis", t().relationshipValues[value("recipient_relationship")] || value("recipient_relationship")],
-          ["Marital status / Familienstand", t().status[value("recipient_marital_status")] || ""],
-          ["Occupation / Berufliche Tätigkeit", joinValues([value("recipient_occupation"), t().frequency[value("recipient_employment_frequency")] || ""], " · ")]
-        ])}
-        <section class="print-section"><h2>Household members / Weitere Haushaltsmitglieder</h2>${simpleTable(["Name", "Relationship / Verhältnis", "Age / Alter"], householdRows.map((row) => [row.name, row.relationship, row.age]))}</section>
-        <div class="authority-box"><h3>${escapeHtml(t().authorityTitle)}</h3><p>${escapeHtml(t().authorityStatement)}</p><div class="print-signatures"><span class="signature-line">${escapeHtml(t().locationDate)}</span><span class="signature-line">${escapeHtml(t().authorityStamp)}</span></div></div>
-        <p class="print-footer">1 / 4</p>
-      </article>
-      <article class="print-page">
-        <h1 class="print-title">B. Economic situation / Wirtschaftliche Verhältnisse</h1>
-        <section class="print-section"><h2>I. Income and expenditure / Einnahmen und Ausgaben (${escapeHtml(currency)})</h2>${simpleTable([t().financialSource, t().income, t().expenses], incomeRows.map(([label, incomeName, expenseName]) => [label, value(incomeName) || "0", value(expenseName) || "0"]))}<div class="print-field full"><span class="print-label">Notes / Erläuterungen</span><span class="print-value">${escapeHtml(value("financial_notes") || "—")}</span></div></section>
-        <section class="print-section"><h2>II. Assets / Vermögen (${escapeHtml(currency)})</h2>${simpleTable([t().asset, t().details, t().value], assetRows.map(([label, detailsName, valueName]) => [label, value(detailsName), value(valueName) || "0"]))}<div class="print-grid"><div class="print-field"><span class="print-label">Total / Gesamtwert</span><span class="print-value">${escapeHtml(money(totalAssetValues()))}</span></div><div class="print-field"><span class="print-label">Sufficient for subsistence? / Reicht zur Bestreitung des Unterhalts aus?</span><span class="print-value">${escapeHtml(yesNo(value("assets_sufficient")))}</span></div></div></section>
-        <p class="print-note"><strong>Evidence / Nachweise:</strong> Tax, pension, employment, social-benefit and asset records should be retained and provided to the tax office when requested.</p>
-        <p class="print-footer">2 / 4</p>
-      </article>
-      <article class="print-page">
-        <h1 class="print-title">C. Other details / Sonstige Angaben</h1>
-        ${printSection("Support history / Verlauf der Unterstützung", [
-          ["1. First support / Erstmalige Unterstützung", formatSupportStart()],
-          ["2. How and by whom payments were made / Wie und durch wen die Zahlungen erfolgten", value("payment_method_explanation")],
-          ["3. Subsistence before support / Lebensunterhalt vor Beginn der Unterstützung", value("prior_subsistence")]
-        ], true)}
-        ${printSection("Household and other supporters / Haushalt und weitere Unterstützer", [
-          ["4. Other supported people in household / Andere unterstützte Personen im Haushalt", value("lives_with_supported_people") === "yes" ? value("co_supported_people_details") : t().no],
-          ["5. Other supporters / Weitere unterstützende Personen", value("other_supporters_exist") === "yes" ? supporterRows.map((row) => joinValues([row.name, row.address, row.amount], " · ")).join("\n") : t().no],
-          ["6. Reason for no / occasional work / Grund für keine / gelegentliche Berufstätigkeit", value("employment_limitation_reason")]
-        ], true)}
-        <section class="print-section"><h2>Prepared evidence / Vorbereitete Nachweise</h2><div class="print-field full"><span class="print-value">${escapeHtml(evidenceList())}</span></div></section>
-        <p class="print-footer">3 / 4</p>
-      </article>
-      <article class="print-page">
-        <h1 class="print-title">D. Declaration / Versicherung</h1>
-        <p class="print-note">${escapeHtml(t().warning)}</p>
-        <div class="print-signatures"><span class="signature-line">${escapeHtml(t().locationDate)}</span><span class="signature-line">${escapeHtml(t().recipientSignature)}</span></div>
-        <section class="print-section" style="margin-top: 18mm"><h2>E. Notes / Erläuterungen</h2><div class="print-field full"><span class="print-value">1. A separate declaration is required for each supported person. / Für jede unterstützte Person ist eine eigene Erklärung erforderlich.<br><br>2. This declaration does not itself establish a legal claim to a tax deduction. The tax office may request additional evidence. / Diese Erklärung begründet keinen Rechtsanspruch auf eine Steuerermäßigung. Das Finanzamt kann weitere Nachweise verlangen.<br><br>3. Monetary support from 2025 onward generally requires bank transfer to an account belonging to the supported person. / Geldzuwendungen ab 2025 erfordern grundsätzlich eine Überweisung auf ein Konto der unterstützten Person.</span></div></section>
-        <p class="print-footer">${escapeHtml(t().generated)} · 4 / 4</p>
-      </article>`;
-  }
-
-  function printSection(title, fields, fullWidth = false) {
-    return `<section class="print-section"><h2>${escapeHtml(title)}</h2><div class="print-grid">${fields.map(([label, fieldValue]) => `<div class="print-field${fullWidth ? " full" : ""}"><span class="print-label">${escapeHtml(label)}</span><span class="print-value">${escapeHtml(fieldValue || "—")}</span></div>`).join("")}</div></section>`;
-  }
-
-  function simpleTable(headers, rows) {
-    const safeRows = rows.length ? rows : [[t().none, "", ""]];
-    return `<table class="print-table"><thead><tr>${headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr></thead><tbody>${safeRows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell || "—")}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
-  }
-
-  function evidenceList() {
-    const labels = Array.from(document.querySelectorAll(".evidence-item input:checked")).map((input) => input.closest(".evidence-item").querySelector("b").textContent);
-    return labels.length ? labels.join("\n• ").replace(/^/, "• ") : t().none;
-  }
-
   function downloadAnswers() {
     const data = serializeForm();
     const name = joinValues([value("recipient_first_name"), value("recipient_last_name")], "-").toLowerCase().replace(/[^a-z0-9-]+/g, "-") || "supported-person";
@@ -580,7 +504,7 @@
   });
 
   document.getElementById("download-json-button").addEventListener("click", downloadAnswers);
-  document.getElementById("print-button").addEventListener("click", () => {
+  document.getElementById("download-pdf-button").addEventListener("click", async () => {
     const issues = requiredIssues(true);
     if (issues.length) {
       renderReview();
@@ -589,8 +513,22 @@
       if (first.name !== "declaration_confirmed") showStep(first.step);
       return;
     }
-    buildPrintDocument();
-    window.print();
+    const button = document.getElementById("download-pdf-button");
+    const label = button.querySelector("span:last-child");
+    const originalLabel = label.textContent;
+    button.disabled = true;
+    label.textContent = t().pdfGenerating;
+    try {
+      if (typeof window.downloadMaintenancePdf !== "function") throw new Error("PDF generator unavailable");
+      await window.downloadMaintenancePdf(serializeForm());
+      showToast(t().pdfDownloaded);
+    } catch (error) {
+      console.error("Could not create PDF", error);
+      showToast(t().pdfUnavailable);
+    } finally {
+      button.disabled = false;
+      label.textContent = originalLabel;
+    }
   });
 
   try {
