@@ -148,12 +148,27 @@
     whiteout(p1, 385, 87, 27, 15);
     draw(p1, data.tax_year, 434, 72, 28, 14, { size: 9, padding: 2 });
     draw(p1, data.tax_year, 386, 88, 24, 12, { size: 8, padding: 1.5 });
-    draw(p1, data.applicant_title, 68, 146, 58, 9, { size: 7, padding: 1 });
-    draw(p1, data.applicant_first_name, 132, 146, 155, 9, { size: 7.5, padding: 1 });
-    draw(p1, data.applicant_last_name, 293, 146, 233, 9, { size: 7.5, padding: 1 });
-    draw(p1, data.applicant_street, 132, 182, 155, 16, { size: 7.5, padding: 2 });
-    draw(p1, data.applicant_postal_code, 317, 160, 20, 17, { size: 5.4, padding: 1 });
-    draw(p1, data.applicant_city, 343, 182, 183, 16, { size: 7.5, padding: 2 });
+    // Rebalance the compact applicant header: use small regular-weight labels and
+    // reserve the larger bold type for the values entered by the applicant.
+    [[68, 125, 58, 30], [128, 125, 161, 30], [291, 125, 235, 30],
+      [68, 158, 58, 43], [128, 158, 161, 43], [291, 158, 50, 43], [343, 158, 183, 43]]
+      .forEach(([x, top, width, height]) => whiteout(p1, x, top, width, height));
+
+    draw(p1, "Mr/Mrs/Ms / Herr/Frau", 68, 126, 58, 9, { size: 5.2, minSize: 5.2, padding: 1, bold: false });
+    draw(p1, "First name / Vorname", 132, 126, 156, 9, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, "Surname / Familienname", 294, 126, 231, 9, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, data.applicant_title, 68, 137, 58, 17, { size: 9.5, minSize: 8, padding: 1 });
+    draw(p1, data.applicant_first_name, 132, 137, 156, 17, { size: 9.5, minSize: 8, padding: 1 });
+    draw(p1, data.applicant_last_name, 294, 137, 231, 17, { size: 9.5, minSize: 8, padding: 1 });
+
+    draw(p1, "Resident in Germany", 68, 160, 58, 16, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, "wohnhaft in Deutschland", 68, 178, 58, 21, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, "Street / Strasse", 132, 160, 156, 9, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, "Postal code / PLZ", 294, 160, 45, 14, { size: 5.2, minSize: 5.2, padding: 1, bold: false });
+    draw(p1, "Town / Wohnort", 345, 160, 180, 9, { size: 5.5, minSize: 5.5, padding: 1, bold: false });
+    draw(p1, data.applicant_street, 132, 174, 156, 26, { size: 9.5, minSize: 8, padding: 2 });
+    draw(p1, data.applicant_postal_code, 294, 174, 45, 26, { size: 8.5, minSize: 7.5, padding: 2 });
+    draw(p1, data.applicant_city, 345, 174, 180, 26, { size: 9.5, minSize: 8, padding: 2 });
     draw(p1, joined([data.recipient_first_name, data.recipient_last_name]), 221, 293, 305, 18, { size: 9 });
     draw(p1, dateValue(data.recipient_birth_date), 221, 315, 305, 18, { size: 9 });
     draw(p1, data.recipient_birth_place, 221, 338, 305, 18, { size: 9 });
